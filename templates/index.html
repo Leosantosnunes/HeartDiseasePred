@@ -12,20 +12,192 @@
 </head>`
 <body>
     <div class="container">
-            <form>
+
+
+        <!--   *************************  Question 1 *************************   -->
+            <form id="form1">
                 <h3>Heart Failure Prediction</h3>
-                <select id = "gender" name="gender">
-                        <option value="select">Gender</option>
-                        <option value="female">Female</option>
-                        <option value="male">Male</option>
+                <select id="gender" name="gender">
+                    <option value="" disabled selected hidden>Gender</option>
+                    <option value="female">Female</option>
+                    <option value="male">Male</option>
                 </select>
-                <input type="age" placeholder="Age" required>
+
+                <div class="btn-box">
+                    <button type="button" id="next1">Next</button>
+                </div>
               </form>
 
+        <!--   *************************  Question 2 *************************   -->
+            <form id="form2">
+                <h3>Heart Failure Prediction</h3>
+                
+                <input type="age" placeholder="Age" required>
 
-    </div>
-    <form>
+                <div class="btn-box">
+                    <button type="button" id="back1" >Back</button>
+                    <button type="button" id="next2" >Next</button>
+                </div>
 
+            </form>
+
+        <!--   *************************  Question 3 *************************   -->
+              <form id="form3">
+                <h3>Heart Failure Prediction</h3>
+                <select id="chestPainType" name="chestPainType">
+                    <option value="" disabled selected hidden>Chest Pain Type</option>
+                    <option value="TA">TA: Typical Angina</option>
+                    <option value="ATA">ATA: Atypical Angina</option>
+                    <option value="NAP">NAP: Non-Anginal Pain</option>
+                    <option value="ASY">ASY: Asymptomatic</option>
+                </select>
+
+                <div class="btn-box">
+                    <button type="button" id="back2">Back</button>
+                    <button type="button" id="next3">Next</button>
+                </div>
+              </form>
+
+        <!--   *************************  Question 4 *************************   -->
+                <form id="form4">
+                    <h3>Heart Failure Prediction</h3>
+
+                    <input type="restingBP" placeholder="Resting Blood Pressure (mm Hg)" required>
+
+                    <div class="btn-box">
+                        <button type="button" id="back3">Back</button>
+                        <button type="button" id="next4">Next</button>
+                    </div>
+                </form>
+
+        <!--   *************************  Question 5 *************************   -->      
+                <form id="form5">
+                    <h3>Heart Failure Prediction</h3>
+
+                    <input type="cholesterol" placeholder="Serum Cholesterol (mm/dl)" required>
+
+                    <div class="btn-box">
+                        <button type="button" id="back4">Back</button>
+                        <button type="button" id="next5">Next</button>
+                    </div>
+                </form>
+        
+
+        <!--   *************************  Question 6 *************************   -->  
+              <form id="form6">
+                <h3>Heart Failure Prediction</h3>
+
+                <select id="bloodSugar" name="bloodSugar">
+                    <option value="" disabled selected hidden>Fasting Blood Sugar</option>
+                    <option value="1">FastingBS > 120 mg/dl</option>
+                    <option value="0">FastingBS < 120 mg/dl</option>
+                </select>
+
+                    <div class="btn-box">
+                        <button type="button" id="back5">Back</button>
+                        <button type="button" id="next6">Next</button>
+                    </div>
+                </form>
+        <!--   *************************  Question 7 *************************   -->  
+            <form id="form7">
+                <h3>Heart Failure Prediction</h3>
+                <select id="electresults" name="restingElectrocardiogramResults">
+                    <option value="" disabled selected hidden>Resting Electrocardiogram Results</option>
+                    <option value="normal">Normal</option>
+                    <option value="ST">ST: having ST-T wave abnormality (T wave inversions and/or ST elevation or depression of > 0.05 mV)</option>
+                    <option value="LVH">LVH: showing probable or definite left ventricular hypertrophy by Estes' criteria</option>   
+                </select>
+                
+                <div class="btn-box">
+                    <button type="button"id="back6">Back</button>
+                    <button type="button" id="next7">Next</button>
+                </div>
+            </form>
+
+        <!--   *************************  Question 8 *************************   -->
+            <form id="form8">
+                <h3>Heart Failure Prediction</h3>
+        
+
+                <input type="MaxHR" placeholder="Maximum heart rate achieved (60 - 220)" required>
+                
+                <div class="btn-box">
+                    <button type="button" id="back7">Back</button>
+                    <button type="button" id="next8">Next</button>
+                </div>
+            </form>
+
+        <!--   *************************  Question 9 *************************   -->
+        <form id="form9">
+            <h3>Heart Failure Prediction</h3>
+    
+            <select id="exercise" name="exercise">
+                <option value="" disabled selected hidden>Exercise-induced angina</option>
+                <option value="Y">Yes</option>
+                <option value="N">No</option>
+            </select>
+            
+            <div class="btn-box">
+                <button type="button" id="back8">Back</button>
+                <button type="button" id="next9">Next</button>
+            </div>
+        </form>
+
+        <!--   *************************  Question 10 *************************   -->
+        <form id="form10">
+            <h3>Heart Failure Prediction</h3>
+    
+
+            <input type="Oldpeak" placeholder="Oldpeak (ST)" required>
+            
+            <div class="btn-box">
+                <button type="button" id="back9">Back</button>
+                <button type="button" id="next10">Next</button>
+            </div>
+        </form>
+
+        <!--   *************************  Question 11 *************************   -->
+        <form id="form11">
+        <h3>Heart Failure Prediction</h3>
+
+        <select id="slope" name="slope">
+            <option value="" disabled selected hidden>The slope of the peak exercise ST segment</option>
+            <option value="Up">Upsloping</option>
+            <option value="Flat">Flat</option>
+            <option value="Down">Downsloping</option>
+        </select>
+        
+        <div class="btn-box">
+            <button type="button" id="back10">Back</button>
+            <button type="button" id="next11">Next</button>
+        </div>
     </form>
+
+
+
+        <!--   *************************  Summary *************************   -->
+        <form id="summary">
+            <h3>Heart Failure Prediction  - Summary </h3>
+            
+            <div class="btn-box">
+                <button type="button" id="back11">Back</button>
+            </div>
+        </form>
+
+            <div class="step-row">
+                <div id="progress"></div>
+                <div class="step-col"><small>1</small></div>
+                <div class="step-col"><small>2</small></div>
+                <div class="step-col"><small>3</small></div>
+                <div class="step-col"><small>4</small></div>
+                <div class="step-col"><small>5</small></div>
+                <div class="step-col"><small>6</small></div>
+                <div class="step-col"><small>7</small></div>
+                <div class="step-col"><small>8</small></div>
+                <div class="step-col"><small>9</small></div>
+                <div class="step-col"><small>10</small></div>
+                <div class="step-col"><small>11</small></div>
+            </div>
+    </div>
 </body>
 </html>    

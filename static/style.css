@@ -178,6 +178,7 @@ body{
     background: #fff;
     border-radius: 5px;
     position: relative;
+    overflow: hidden;
 }
 
 h3{
@@ -191,6 +192,7 @@ h3{
     position: absolute;
     top: 100px;
     left: 40px;
+    transition: 0.8s;
 }
 
 form select, input{
@@ -200,4 +202,66 @@ form select, input{
     border:0;
     border-bottom: 1px solid #999;
     outline: none;
+    background:transparent;
+}
+
+::placeholder{
+    color:#777;
+}
+
+.btn-box{
+    width: 100%;
+    margin: 30px auto;
+    text-align: center;
+}
+
+form button{
+    width: 110px;
+    height: 35px;
+    margin: 0 10px;
+    background: orange;
+    border-radius: 30px;
+    border:0;
+    outline: none;
+    color:#fff;
+    cursor: pointer;
+}
+
+#form2, #form3, #form4, #form5, #form6, #form7, #form8, #form9, #form10, #form11, #form12, #summary{
+    left: 450px;
+}
+
+.step-row{
+    width: 360px;
+    height: 40px;
+    margin: 0 auto;
+    display: flex;
+    align-items:center;
+    box-shadow: 0 -1px 5px -1px #000;
+    position: relative;
+}
+.step-col{
+    width: 150px;
+    text-align: center;
+    color:#333;
+    position: relative;
+}
+
+#progress{
+    position: absolute;
+    height: 100%;
+    width: 32.7px;
+    background: orange;
+}
+
+#progress::after{
+    content: '';
+    height: 0;
+    width: 0;
+    border-top: 20px solid transparent;
+    border-bottom: 20px solid transparent;
+    position: absolute;
+    right: -20px;
+    top: 0;
+    border-left: 20px solid #ffad06 ;
 }
