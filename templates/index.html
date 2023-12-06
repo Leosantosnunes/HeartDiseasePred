@@ -17,6 +17,7 @@
         <!--   *************************  Question 1 *************************   -->
             <form id="form1">
                 <h3>Heart Failure Prediction</h3>
+                <h4>Select your Gender</h4>
                 <select id="gender" name="gender">
                     <option value="" disabled selected hidden>Gender</option>
                     <option value="female">Female</option>
@@ -30,9 +31,13 @@
 
         <!--   *************************  Question 2 *************************   -->
             <form id="form2">
-                <h3>Heart Failure Prediction</h3>
-                
-                <input type="age" placeholder="Age" required>
+                <h3>Heart Failure Prediction</h3>             
+                <h4>Select your Age</h4>
+                <div class="centered-wrapper">
+                    <div class="age-selector">
+                        <input type="number" id="ageInput" placeholder="Age" min="0" required>
+                    </div>
+                </div>
 
                 <div class="btn-box">
                     <button type="button" id="back1" >Back</button>
@@ -44,6 +49,7 @@
         <!--   *************************  Question 3 *************************   -->
               <form id="form3">
                 <h3>Heart Failure Prediction</h3>
+                <h4>Select your Chest Pain Type</h4>
                 <select id="chestPainType" name="chestPainType">
                     <option value="" disabled selected hidden>Chest Pain Type</option>
                     <option value="TA">TA: Typical Angina</option>
@@ -61,8 +67,8 @@
         <!--   *************************  Question 4 *************************   -->
                 <form id="form4">
                     <h3>Heart Failure Prediction</h3>
-
-                    <input type="restingBP" placeholder="Resting Blood Pressure (mm Hg)" required>
+                    <h4>Select your Resting Blood Pressure (mm Hg)</h4>
+                    <input type="number" placeholder="Resting Blood Pressure (mm Hg)" min="0" max="200"required>
 
                     <div class="btn-box">
                         <button type="button" id="back3">Back</button>
@@ -73,8 +79,8 @@
         <!--   *************************  Question 5 *************************   -->      
                 <form id="form5">
                     <h3>Heart Failure Prediction</h3>
-
-                    <input type="cholesterol" placeholder="Serum Cholesterol (mm/dl)" required>
+                    <h4>Select your Serum Cholesterol (mm/dl)</h4>
+                    <input type="number" placeholder="Serum Cholesterol (mm/dl)" min="0" max="603" required>
 
                     <div class="btn-box">
                         <button type="button" id="back4">Back</button>
@@ -86,7 +92,7 @@
         <!--   *************************  Question 6 *************************   -->  
               <form id="form6">
                 <h3>Heart Failure Prediction</h3>
-
+                <h4>Select your Fasting Blood Sugar</h4>
                 <select id="bloodSugar" name="bloodSugar">
                     <option value="" disabled selected hidden>Fasting Blood Sugar</option>
                     <option value="1">FastingBS > 120 mg/dl</option>
@@ -101,6 +107,7 @@
         <!--   *************************  Question 7 *************************   -->  
             <form id="form7">
                 <h3>Heart Failure Prediction</h3>
+                <h4>Select your Resting Electrocardiogram Result Type</h4>
                 <select id="electresults" name="restingElectrocardiogramResults">
                     <option value="" disabled selected hidden>Resting Electrocardiogram Results</option>
                     <option value="normal">Normal</option>
@@ -117,9 +124,8 @@
         <!--   *************************  Question 8 *************************   -->
             <form id="form8">
                 <h3>Heart Failure Prediction</h3>
-        
-
-                <input type="MaxHR" placeholder="Maximum heart rate achieved (60 - 220)" required>
+                <h4>Select your Maximum heart rate achieved</h4>
+                <input type="number" placeholder="Maximum heart rate achieved" min="60" max="220"required>
                 
                 <div class="btn-box">
                     <button type="button" id="back7">Back</button>
@@ -130,7 +136,7 @@
         <!--   *************************  Question 9 *************************   -->
         <form id="form9">
             <h3>Heart Failure Prediction</h3>
-    
+            <h4>Select your Exercise-induced angina</h4>
             <select id="exercise" name="exercise">
                 <option value="" disabled selected hidden>Exercise-induced angina</option>
                 <option value="Y">Yes</option>
@@ -146,8 +152,7 @@
         <!--   *************************  Question 10 *************************   -->
         <form id="form10">
             <h3>Heart Failure Prediction</h3>
-    
-
+            <h4>Select your Oldpeak (ST)</h4>
             <input type="Oldpeak" placeholder="Oldpeak (ST)" required>
             
             <div class="btn-box">
@@ -159,7 +164,7 @@
         <!--   *************************  Question 11 *************************   -->
         <form id="form11">
         <h3>Heart Failure Prediction</h3>
-
+        <h4>Select your slope of the peak exercise ST</h4>
         <select id="slope" name="slope">
             <option value="" disabled selected hidden>The slope of the peak exercise ST segment</option>
             <option value="Up">Upsloping</option>
@@ -177,7 +182,8 @@
 
         <!--   *************************  Summary *************************   -->
         <form id="summary">
-            <h3>Heart Failure Prediction  - Summary </h3>
+            <h3>Heart Failure Prediction </h3>
+            <h4>Summary</h4>
             
             <div class="btn-box">
                 <button type="button" id="back11">Back</button>

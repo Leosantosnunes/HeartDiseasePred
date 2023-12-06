@@ -50,17 +50,17 @@ next10.onclick = function(){nextQuestion(form10, form11, 11)};
 next11.onclick = function(){nextQuestion(form11, summary, 12)};
 
 
-back1.onclick = function(){previousQuestion(form1, form2)};
-back2.onclick = function(){previousQuestion(form2, form3)};
-back3.onclick = function(){previousQuestion(form3, form4)};
-back4.onclick = function(){previousQuestion(form4, form5)};
-back5.onclick = function(){previousQuestion(form5, form6)};
-back6.onclick = function(){previousQuestion(form6, form7)};
-back7.onclick = function(){previousQuestion(form7, form8)};
-back8.onclick = function(){previousQuestion(form8, form9)};
-back9.onclick = function(){previousQuestion(form9, form10)};
-back10.onclick = function(){previousQuestion(form10, form11)};
-back11.onclick = function(){previousQuestion(form11, summary)};
+back1.onclick = function(){previousQuestion(form1, form2, 1)};
+back2.onclick = function(){previousQuestion(form2, form3, 2)};
+back3.onclick = function(){previousQuestion(form3, form4, 3)};
+back4.onclick = function(){previousQuestion(form4, form5, 4)};
+back5.onclick = function(){previousQuestion(form5, form6, 5)};
+back6.onclick = function(){previousQuestion(form6, form7, 6)};
+back7.onclick = function(){previousQuestion(form7, form8, 7)};
+back8.onclick = function(){previousQuestion(form8, form9, 8)};
+back9.onclick = function(){previousQuestion(form9, form10, 9)};
+back10.onclick = function(){previousQuestion(form10, form11, 10)};
+back11.onclick = function(){previousQuestion(form11, summary, 11)};
 
 function nextQuestion(firstForm, secondForm, formNumber){
     firstForm.style.left = "-450px";
@@ -68,7 +68,13 @@ function nextQuestion(firstForm, secondForm, formNumber){
     progress.style.width = 32.7*formNumber + 'px';
 }
 
-function previousQuestion(firstForm, secondForm){
+function previousQuestion(firstForm, secondForm, formNumber){
     firstForm.style.left = "40px";
     secondForm.style.left = "450px";
+    progress.style.width = 32.7*formNumber + 'px';
 }
+
+
+
+/********      INCREMENT/DECREMENT  AGE    ********/
+
