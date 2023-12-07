@@ -10,18 +10,9 @@ def index():
 @app.route('/<dataForm>',methods = ['POST'])
 ## manual manipulation of the system
 def handleRequest(dataForm):
-    print(request.args);                   
-    return True
+    print(request.json);                   
+    return dataForm
     
-@app.route('/<farmboard>')
-def handleRequest2():
-    return True
-
-
-@app.route('/rpi-action/<RPiactionid>',methods = ['POST'])
-## manual manipulation of the system
-def handleRequestRPi():           
-    return True
                               
 if __name__=='__main__':    
     app.run(debug=True, port=5000, host='0.0.0.0')

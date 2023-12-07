@@ -85,7 +85,7 @@ let Sex_M = 0.0;
 
 const body = {
     Sex_F: Sex_F,
-    Sex_F: Sex_M
+    Sex_M: Sex_M
 }
 
 submitBtn.addEventListener("click", function(){
