@@ -4,18 +4,18 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Indoor Farm Management</title>
+    <title>Final Project - Smart Device</title>
     <link rel="stylesheet" href="../static/style.css">
-    <link rel="shortcut icon" href="../static/images/favicon-32x32.png" type="image/x-icon">
+    <!-- <link rel="shortcut icon" href="../static/images/favicon-32x32.png" type="image/x-icon"> -->
     <script src="../static/script.js" defer></script>
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <!-- <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script> -->
 </head>`
 <body>
     <div class="container">
 
 
         <!--   *************************  Question 1 *************************   -->
-            <form id="form1">
+            <form id="form1" method="post">
                 <h3>Heart Failure Prediction</h3>
                 <h4>Select your Gender</h4>
                 <select id="gender" name="gender">
@@ -163,32 +163,31 @@
 
         <!--   *************************  Question 11 *************************   -->
         <form id="form11">
-        <h3>Heart Failure Prediction</h3>
-        <h4>Select your slope of the peak exercise ST</h4>
-        <select id="slope" name="slope">
-            <option value="" disabled selected hidden>The slope of the peak exercise ST segment</option>
-            <option value="Up">Upsloping</option>
-            <option value="Flat">Flat</option>
-            <option value="Down">Downsloping</option>
-        </select>
-        
-        <div class="btn-box">
-            <button type="button" id="back10">Back</button>
-            <button type="button" id="next11">Next</button>
-        </div>
-    </form>
-
-
-
-        <!--   *************************  Summary *************************   -->
-        <form id="summary">
-            <h3>Heart Failure Prediction </h3>
-            <h4>Summary</h4>
+            <h3>Heart Failure Prediction</h3>
+            <h4>Select your slope of the peak exercise ST</h4>
+            <select id="slope" name="slope">
+                <option value="" disabled selected hidden>The slope of the peak exercise ST segment</option>
+                <option value="Up">Upsloping</option>
+                <option value="Flat">Flat</option>
+                <option value="Down">Downsloping</option>
+            </select>
             
             <div class="btn-box">
-                <button type="button" id="back11">Back</button>
+                <button type="button" id="back10">Back</button>
+                <button type="button" id="next11">Next</button>
             </div>
         </form>
+
+        <form id="summary">
+
+
+          
+            <div class="btn-box">
+                <button type="button" id="back11">Back</button>
+                <button type="button" id="submit">Submit</button>
+            </div>
+        </form>
+      
 
             <div class="step-row">
                 <div id="progress"></div>
@@ -202,7 +201,7 @@
                 <div class="step-col"><small>8</small></div>
                 <div class="step-col"><small>9</small></div>
                 <div class="step-col"><small>10</small></div>
-                <div class="step-col"><small>11</small></div>
+                <div id= "progress11" class="step-col"><small>11</small></div>
             </div>
     </div>
 </body>
