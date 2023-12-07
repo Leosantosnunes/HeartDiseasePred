@@ -9,7 +9,6 @@ let form8 = document.getElementById("form8");
 let form9 = document.getElementById("form9");
 let form10 = document.getElementById("form10");
 let form11= document.getElementById("form11");
-let summary = document.getElementById("summary");
 
 let next1 = document.getElementById("next1");
 let next2 = document.getElementById("next2");
@@ -47,7 +46,11 @@ next7.onclick = function(){nextQuestion(form7, form8, 8)};
 next8.onclick = function(){nextQuestion(form8, form9, 9)};
 next9.onclick = function(){nextQuestion(form9, form10, 10)};
 next10.onclick = function(){nextQuestion(form10, form11, 11)};
-next11.onclick = function(){nextQuestion(form11, summary, 12)};
+next11.onclick = function(){
+    summary.style.display = "block";
+    form11.style.display = "none";
+    nextQuestion(form11, summary, 11)
+};
 
 
 back1.onclick = function(){previousQuestion(form1, form2, 1)};
@@ -63,6 +66,7 @@ back10.onclick = function(){previousQuestion(form10, form11, 10)};
 back11.onclick = function(){previousQuestion(form11, summary, 11)};
 
 function nextQuestion(firstForm, secondForm, formNumber){
+    
     firstForm.style.left = "-450px";
     secondForm.style.left = "40px";
     progress.style.width = 32.7*formNumber + 'px';
@@ -74,7 +78,50 @@ function previousQuestion(firstForm, secondForm, formNumber){
     progress.style.width = 32.7*formNumber + 'px';
 }
 
+let submitBtn = document.getElementById("submit");
+
+let Sex_F = 0.0;
+let Sex_M = 0.0;
+
+submitBtn.addEventListener("click", function(){
+    let genderInput = document.getElementById("gender").value; // Retrieve gender value on click
+    inputGender(genderInput);
+    console.log(genderInput);
+    console.log(Sex_F);
+    console.log(Sex_M);
+});
+
+function inputGender(genderInput){
+    if(genderInput === "female"){
+        Sex_F = 1.0;
+        Sex_M = 0.0;
+    }
+    else{
+        Sex_F = 0.0;
+        Sex_M = 1.0;
+    }
+}
+
+async function SendRequest(actionid,url){
+  
+    const body = {
+      actionid_id:actionid,
+      timeON:timeON,
+      timeOFF:timeOFF
+    }
+    
+    try{
+      const response = await fetch(url,{method:"POST",body:JSON.stringify(body)});
+      console.log(response);
+    }
+    catch(error){
+      console.error(error);
+    }
+  }
 
 
-/********      INCREMENT/DECREMENT  AGE    ********/
+
+
+
+
 
