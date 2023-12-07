@@ -82,15 +82,23 @@ let submitBtn = document.getElementById("submit");
 
 let Sex_F = 0.0;
 let Sex_M = 0.0;
+let ageInput;
 
-const body = {
-    Sex_F: Sex_F,
-    Sex_F: Sex_M
-}
+
 
 submitBtn.addEventListener("click", function(){
-    let genderInput = document.getElementById("gender").value; // Retrieve gender value on click
+    let genderInput = document.getElementById("gender").value; 
+    let ageInput = document.getElementById("gender").value; 
     inputGender(genderInput);
+
+
+    const body = {
+        Sex_F: Sex_F,
+        Sex_M: Sex_M
+        
+
+    }
+
     console.log(genderInput);
     console.log(Sex_F);
     console.log(Sex_M);
@@ -109,18 +117,34 @@ function inputGender(genderInput){
     }
 }
 
+function inputAge (ageInput){
+    if(genderInput === "female"){
+        Sex_F = 1.0;
+        Sex_M = 0.0;
+    }
+    else{
+        Sex_F = 0.0;
+        Sex_M = 1.0;
+    }
+}
+
 
 
 async function SendRequest(body){
-    
     try{
-      const response = await fetch("/dataForm",{method:"POST",body:JSON.stringify(body)});
-      console.log(response);
+        const response = await fetch("/dataForm", {
+            method: "POST",
+            headers: {
+                'Content-Type': 'application/json' // Specify the content type as JSON
+            },
+            body: JSON.stringify(body)
+        });
+        console.log(response);
     }
     catch(error){
-      console.error(error);
+        console.error(error);
     }
-  }
+}
 
 
 
