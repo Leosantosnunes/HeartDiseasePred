@@ -112,15 +112,20 @@ function inputGender(genderInput){
 
 
 async function SendRequest(body){
-    
     try{
-      const response = await fetch("/dataForm",{method:"POST",body:JSON.stringify(body)});
-      console.log(response);
+        const response = await fetch("/dataForm", {
+            method: "POST",
+            headers: {
+                'Content-Type': 'application/json' // Specify the content type as JSON
+            },
+            body: JSON.stringify(body)
+        });
+        console.log(response);
     }
     catch(error){
-      console.error(error);
-    }
-  }
+        console.error(error);
+    }}
+
 
 
 
