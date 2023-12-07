@@ -85,6 +85,10 @@ let Sex_M = 0.0;
 let ageInput;
 
 
+const body = {
+    Sex_F: Sex_F,
+    Sex_F: Sex_M
+}
 
 submitBtn.addEventListener("click", function(){
     let genderInput = document.getElementById("gender").value; 
@@ -142,9 +146,9 @@ async function SendRequest(body){
         console.log(response);
     }
     catch(error){
-        console.error(error);
+      console.error(error);
     }
-}
+  }
 
 
 
