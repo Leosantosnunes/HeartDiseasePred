@@ -73,6 +73,7 @@ next11.onclick = function(){
     summary.style.display = "block";
     form11.style.display = "none";
     nextQuestion(form11, summary, 11, "slope")
+    updateSummary()
 };
 
 
@@ -88,6 +89,8 @@ back9.onclick = function(){previousQuestion(form9, form10, 9)};
 back10.onclick = function(){previousQuestion(form10, form11, 10)};
 back11.onclick = function(){previousQuestion(form11, summary, 11)};
 
+
+/*************  MOVE TO NEXT QUESTION  *************/
 function nextQuestion(firstForm, secondForm, formNumber, id){
 
     if(validateCurrentSection(id)){
@@ -271,4 +274,46 @@ function validateCurrentSection(id) {
             return false;
     }
     return true; 
+}
+
+
+/*************  UPDATE SUMMARY   *************/
+
+function gatherFormData() {
+    const formData = {};
+
+    // Loop through each form
+    for (let i = 1; i <= 11; i++) {
+        const form = document.getElementById(`form${i}`);
+        const inputs = form.querySelectorAll('input, select');
+
+        inputs.forEach(input => {
+            formData[input.id] = input.value;
+        });
+    }
+
+    return formData;
+}
+
+function updateSummary() {
+    const formData = gatherFormData();
+    const summaryTable = document.getElementById('summaryTable');
+
+    // Clear previous summary content
+    summaryTable.innerHTML = '';
+
+    // Populate the summary table
+    Object.keys(formData).forEach(key => {
+        const row = document.createElement('tr');
+        const labelCell = document.createElement('td');
+        const valueCell = document.createElement('td');
+
+        labelCell.textContent = key;
+        valueCell.textContent = formData[key];
+
+        row.appendChild(labelCell);
+        row.appendChild(valueCell);
+
+        summaryTable.appendChild(row);
+    });
 }
