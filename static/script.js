@@ -36,20 +36,43 @@ let back11 = document.getElementById("back11");
 
 let progress = document.getElementById("progress");
 
-next1.onclick = function(){nextQuestion(form1, form2, 2)};
-next2.onclick = function(){nextQuestion(form2, form3, 3)};
-next3.onclick = function(){nextQuestion(form3, form4, 4)};
-next4.onclick = function(){nextQuestion(form4, form5, 5)};
-next5.onclick = function(){nextQuestion(form5, form6, 6)};
-next6.onclick = function(){nextQuestion(form6, form7, 7)};
-next7.onclick = function(){nextQuestion(form7, form8, 8)};
-next8.onclick = function(){nextQuestion(form8, form9, 9)};
-next9.onclick = function(){nextQuestion(form9, form10, 10)};
-next10.onclick = function(){nextQuestion(form10, form11, 11)};
+let submitBtn = document.getElementById("submit");
+
+let Sex_F = 0.0;
+let Sex_M = 0.0;
+
+let ChestPainType_ASY = 0;
+let ChestPainType_ATA = 0;
+let ChestPainType_NAP = 0;
+let ChestPainType_TA =  0;
+
+let RestingECG_LVH = 0;
+let RestingECG_Normal = 0;
+let RestingCG_ST = 0;
+
+let ExerciseAngina_N = 0;
+let ExerciseAngina_Y = 0;
+
+let ST_Slope_Down = 0;
+let ST_Slope_flat = 0;
+let ST_Slope_Up = 0;
+
+
+
+next1.onclick = function(){nextQuestion(form1, form2, 2, "gender")};
+next2.onclick = function(){nextQuestion(form2, form3, 3, "ageInput")};
+next3.onclick = function(){nextQuestion(form3, form4, 4, "chestPainType")};
+next4.onclick = function(){nextQuestion(form4, form5, 5, "bloodPressure")};
+next5.onclick = function(){nextQuestion(form5, form6, 6, "cholesterol")};
+next6.onclick = function(){nextQuestion(form6, form7, 7, "bloodSugar")};
+next7.onclick = function(){nextQuestion(form7, form8, 8, "restingElectResults")};
+next8.onclick = function(){nextQuestion(form8, form9, 9, "heartRate")};
+next9.onclick = function(){nextQuestion(form9, form10, 10, "exercise")};
+next10.onclick = function(){nextQuestion(form10, form11, 11, "oldpeak")};
 next11.onclick = function(){
     summary.style.display = "block";
     form11.style.display = "none";
-    nextQuestion(form11, summary, 11)
+    nextQuestion(form11, summary, 11, "slope")
 };
 
 
@@ -65,11 +88,13 @@ back9.onclick = function(){previousQuestion(form9, form10, 9)};
 back10.onclick = function(){previousQuestion(form10, form11, 10)};
 back11.onclick = function(){previousQuestion(form11, summary, 11)};
 
-function nextQuestion(firstForm, secondForm, formNumber){
-    
-    firstForm.style.left = "-450px";
-    secondForm.style.left = "40px";
-    progress.style.width = 32.7*formNumber + 'px';
+function nextQuestion(firstForm, secondForm, formNumber, id){
+
+    if(validateCurrentSection(id)){
+        firstForm.style.left = "-450px";
+        secondForm.style.left = "40px";
+        progress.style.width = 32.7*formNumber + 'px';
+    }
 }
 
 function previousQuestion(firstForm, secondForm, formNumber){
@@ -78,37 +103,104 @@ function previousQuestion(firstForm, secondForm, formNumber){
     progress.style.width = 32.7*formNumber + 'px';
 }
 
-let submitBtn = document.getElementById("submit");
 
-let Sex_F = 0.0;
-let Sex_M = 0.0;
-let ageInput;
-
-
-const body = {
-    Sex_F: Sex_F,
-    Sex_F: Sex_M
-}
+/*************  SUBMIT FORM AND SEND REQUEST  *************/
 
 submitBtn.addEventListener("click", function(){
-    let genderInput = document.getElementById("gender").value; 
-    let ageInput = document.getElementById("gender").value; 
-    inputGender(genderInput);
 
+    let genderInput = document.getElementById("gender").value; 
+    let ageInput = document.getElementById("ageInput").value; 
+    let chestPainTypeInput = document.getElementById("chestPainType").value; 
+    let bloodPressureInput = document.getElementById("bloodPressure").value; 
+    let cholesterolInput = document.getElementById("cholesterol").value; 
+    let bloodSugarInput = document.getElementById("bloodSugar").value; 
+    let restingElectResultsInput = document.getElementById("restingElectResults").value; 
+    let heartRateInput = document.getElementById("heartRate").value; 
+    let oldpeakInput = document.getElementById("oldpeak").value; 
+    let exerciseInput = document.getElementById("exercise").value; 
+    let slopeInput = document.getElementById("slope").value; 
+
+    inputGender(genderInput);
+    inputChestPain (chestPainTypeInput);
+    inputRestingEle(restingElectResultsInput);
+    inputExercise(exerciseInput);
+    inputSlope(slopeInput);
 
     const body = {
         Sex_F: Sex_F,
-        Sex_M: Sex_M
-        
-
+        Sex_M: Sex_M,
+        Age: ageInput,
+        RestingBP: bloodPressureInput,
+        Cholesterol: cholesterolInput,
+        FastingBS: bloodSugarInput,
+        MaxHR: heartRateInput,
+        OldPeak: oldpeakInput,
+        ChestPainType_ASY: ChestPainType_ASY,
+        ChestPainType_ATA: ChestPainType_ATA,
+        ChestPainType_NAP: ChestPainType_NAP,
+        ChestPainType_TA: ChestPainType_TA,
+        RestingECG_LVH: RestingECG_LVH,
+        RestingECG_Normal: RestingECG_Normal,
+        RestingCG_ST: RestingCG_ST,
+        ExerciseAngina_N: ExerciseAngina_N,
+        ExerciseAngina_Y: ExerciseAngina_Y,
+        ST_Slope_Down: ST_Slope_Down,
+        ST_Slope_flat: ST_Slope_flat,
+        ST_Slope_Up: ST_Slope_Up
     }
-
-    console.log(genderInput);
-    console.log(Sex_F);
-    console.log(Sex_M);
 
     SendRequest( body )
 });
+
+
+function inputSlope(slopeInput){
+    if(slopeInput === "Up"){
+        ST_Slope_Down = 0;
+        ST_Slope_flat = 0;
+        ST_Slope_Up = 1;
+    }
+    else if(slopeInput === "Flat"){
+        ST_Slope_Down = 0;
+        ST_Slope_flat = 1;
+        ST_Slope_Up = 0;
+    }
+    else{
+        EST_Slope_Down = 1;
+        ST_Slope_flat = 0;
+        ST_Slope_Up = 0;
+    }
+}
+
+
+function inputExercise(exerciseInput){
+    if(exerciseInput === "Y"){
+        ExerciseAngina_N = 0;
+        ExerciseAngina_Y = 1;
+    }
+    else{
+        ExerciseAngina_N = 1;
+        ExerciseAngina_Y = 0;
+    }
+}
+
+function inputRestingEle(restingElectResultsInput){
+    if(restingElectResultsInput === "normal"){
+        estingECG_LVH = 0;
+        RestingECG_Normal = 1;
+        RestingCG_ST = 0;
+    }
+    else if(restingElectResultsInput === "ST"){
+        estingECG_LVH = 0;
+        RestingECG_Normal = 0;
+        RestingCG_ST = 1;
+    }
+    else{
+        estingECG_LVH = 0;
+        RestingECG_Normal = 0;
+        RestingCG_ST = 1;
+    }
+}
+
 
 function inputGender(genderInput){
     if(genderInput === "female"){
@@ -121,14 +213,30 @@ function inputGender(genderInput){
     }
 }
 
-function inputAge (ageInput){
-    if(genderInput === "female"){
-        Sex_F = 1.0;
-        Sex_M = 0.0;
+function inputChestPain (chestPainTypeInput){
+    if(chestPainTypeInput === "TA"){
+        ChestPainType_ASY = 0;
+        ChestPainType_ATA = 0;
+        ChestPainType_NAP = 0;
+        ChestPainType_TA =  1;
+    }
+    else if (chestPainTypeInput === "ATA"){
+        ChestPainType_ASY = 0;
+        ChestPainType_ATA = 1;
+        ChestPainType_NAP = 0;
+        ChestPainType_TA =  0;
+    }
+    else if (chestPainTypeInput === "NAP"){
+        ChestPainType_ASY = 0;
+        ChestPainType_ATA = 0;
+        ChestPainType_NAP = 1;
+        ChestPainType_TA =  0;
     }
     else{
-        Sex_F = 0.0;
-        Sex_M = 1.0;
+        ChestPainType_ASY = 1;
+        ChestPainType_ATA = 0;
+        ChestPainType_NAP = 0;
+        ChestPainType_TA =  0;
     }
 }
 
@@ -152,7 +260,15 @@ async function SendRequest(body){
 
 
 
+/*************  VALIDATE FORM  *************/
 
+function validateCurrentSection(id) {
+   
+    let input = document.getElementById(id).value; 
 
-
-
+        if (!input) {
+            alert("Please answer the question before proceeding.");
+            return false;
+    }
+    return true; 
+}

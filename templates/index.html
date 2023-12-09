@@ -18,7 +18,7 @@
             <form id="form1" method="post">
                 <h3>Heart Failure Prediction</h3>
                 <h4>Select your Gender</h4>
-                <select id="gender" name="gender">
+                <select id="gender" name="gender" required>
                     <option value="" disabled selected hidden>Gender</option>
                     <option value="female">Female</option>
                     <option value="male">Male</option>
@@ -68,7 +68,7 @@
                 <form id="form4">
                     <h3>Heart Failure Prediction</h3>
                     <h4>Select your Resting Blood Pressure (mm Hg)</h4>
-                    <input type="number" placeholder="Resting Blood Pressure (mm Hg)" min="0" max="200"required>
+                    <input id = "bloodPressure" type="number" placeholder="Resting Blood Pressure (mm Hg)" min="0" max="200"required>
 
                     <div class="btn-box">
                         <button type="button" id="back3">Back</button>
@@ -80,7 +80,7 @@
                 <form id="form5">
                     <h3>Heart Failure Prediction</h3>
                     <h4>Select your Serum Cholesterol (mm/dl)</h4>
-                    <input type="number" placeholder="Serum Cholesterol (mm/dl)" min="0" max="603" required>
+                    <input id = "cholesterol" type="number" placeholder="Serum Cholesterol (mm/dl)" min="0" max="603" required>
 
                     <div class="btn-box">
                         <button type="button" id="back4">Back</button>
@@ -108,7 +108,7 @@
             <form id="form7">
                 <h3>Heart Failure Prediction</h3>
                 <h4>Select your Resting Electrocardiogram Result Type</h4>
-                <select id="electresults" name="restingElectrocardiogramResults">
+                <select id="restingElectResults" name="restingElectrocardiogramResults">
                     <option value="" disabled selected hidden>Resting Electrocardiogram Results</option>
                     <option value="normal">Normal</option>
                     <option value="ST">ST: having ST-T wave abnormality (T wave inversions and/or ST elevation or depression of > 0.05 mV)</option>
@@ -125,7 +125,7 @@
             <form id="form8">
                 <h3>Heart Failure Prediction</h3>
                 <h4>Select your Maximum heart rate achieved</h4>
-                <input type="number" placeholder="Maximum heart rate achieved" min="60" max="220"required>
+                <input id = "heartRate" type="number" placeholder="Maximum heart rate achieved" min="60" max="220"required>
                 
                 <div class="btn-box">
                     <button type="button" id="back7">Back</button>
@@ -153,7 +153,7 @@
         <form id="form10">
             <h3>Heart Failure Prediction</h3>
             <h4>Select your Oldpeak (ST)</h4>
-            <input type="Oldpeak" placeholder="Oldpeak (ST)" required>
+            <input id = "oldpeak" type="number" placeholder="Oldpeak (ST)" required>
             
             <div class="btn-box">
                 <button type="button" id="back9">Back</button>
