@@ -122,6 +122,7 @@ submitBtn.addEventListener("click", function(){
     let oldpeakInput = document.getElementById("oldpeak").value; 
     let exerciseInput = document.getElementById("exercise").value; 
     let slopeInput = document.getElementById("slope").value; 
+    
 
     inputGender(genderInput);
     inputChestPain (chestPainTypeInput);
@@ -154,7 +155,7 @@ submitBtn.addEventListener("click", function(){
 
     SendRequest( body )
 
-    GetRequest()
+    GetRequest();
 
     summary.style.left = "-450px";
     results.style.left = "40px";
@@ -268,10 +269,14 @@ async function SendRequest(body){
 
 
   async function GetRequest(){
+
+    let getResult = document.getElementById("getResult");
+
     try{
         const response = await fetch("/dataForm");
         console.log(response);
         const data = await response.json;
+        getResult.textContent = data;
     }
     catch(error){
         console.error(error);
