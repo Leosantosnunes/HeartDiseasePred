@@ -154,6 +154,8 @@ submitBtn.addEventListener("click", function(){
 
     SendRequest( body )
 
+    GetRequest()
+
     summary.style.left = "-450px";
     results.style.left = "40px";
 });
@@ -265,6 +267,16 @@ async function SendRequest(body){
   }
 
 
+  async function GetRequest(){
+    try{
+        const response = await fetch("/dataForm");
+        console.log(response);
+        const data = await response.json;
+    }
+    catch(error){
+        console.error(error);
+      }
+  }
 
 /*************  VALIDATE FORM  *************/
 
