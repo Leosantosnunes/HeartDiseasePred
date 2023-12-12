@@ -5,6 +5,7 @@ from sklearn.tree import DecisionTreeClassifier
 from sklearn.ensemble import AdaBoostClassifier
 from sklearn.metrics import roc_auc_score
 from sklearn.model_selection import train_test_split, GridSearchCV
+import app;
 
 heartcsv = pd.read_csv('C:/Users/leona/Desktop/SmartDevices/heart_disease/heart.csv')
 
@@ -22,8 +23,12 @@ heart_disease_model = DecisionTreeClassifier(max_depth=3, min_samples_leaf=0.10,
 
 adb_heart_disease = AdaBoostClassifier(estimator=heart_disease_model, n_estimators=100)
 adb_heart_disease.fit(X,y)
-adb_heart_disease_proba = adb_heart_disease.predict_proba(X)[:, 1]
-score = roc_auc_score(y, adb_heart_disease_proba)
-print(score)
+def predict_result(data):
+    # Process 'data' accordingly
+    result = adb_heart_disease.predict_proba(data)[:, 1]
+    return result
+# result = adb_heart_disease.predict_proba(app.dataForm)[:, 1]
+# score = roc_auc_score(y, adb_heart_disease_proba)
+# print(result)
 
 
