@@ -30,6 +30,25 @@ h3{
     color: #777;
 }
 
+
+h2{
+    text-align: center;
+    margin-bottom: 40px;
+    color: #463d3d;
+}
+
+h4{
+    text-align: center;
+    margin-bottom: 40px;
+    color: #192d1b;
+}
+
+h6{
+    text-align: center;
+    margin-bottom: 40px;
+    color: #c33636;
+}
+
 .container form{
     width: 280px;
     position: absolute;

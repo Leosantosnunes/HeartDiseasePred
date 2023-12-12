@@ -253,6 +253,8 @@ function inputChestPain (chestPainTypeInput){
 
 async function SendRequest(body){
     let getResult = document.getElementById("getResult");
+    let textResult = document.getElementById("textResult");
+    
     try{
         const response = await fetch("/result", {
             method: "POST",
@@ -262,12 +264,23 @@ async function SendRequest(body){
             body: JSON.stringify(body)
         });
         console.log(response);
+
+        // getResult.textContent = "TEST RESULT"
+
+        // textResult.textContent = "The patient has a low probability of having heart disease"
         if (response.ok) {
             const data = await response.text(); // Get the response as text
             console.log(data); // Log the response data
-            
 
             getResult.textContent = data; // Set response data as text content
+
+            if(getResult.value > 0.5){
+                textResult.textContent = "The patient has a high probability of having heart disease"
+            }
+            else{
+                textResult.textContent = "The patient has a low probability of having heart disease"
+            }
+    
         } else {
             // Handle non-successful responses here
             console.error('Error:', response.statusText);

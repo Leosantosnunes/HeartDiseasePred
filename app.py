@@ -21,7 +21,7 @@ def handleRequestResult():
         
         # Make predictions using the formatted data
         result = heart_disease_pred.predict_result(formatted_data)
-        result = np.array2string(result)
+        result = np.array2string(result[0])
         return result
     else:
         return "Invalid data format", 400  # Return an error response if data is invalid
