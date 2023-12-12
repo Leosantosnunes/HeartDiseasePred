@@ -1,28 +1,50 @@
 from flask import Flask, render_template,request
+import numpy as np
+import pandas as pd
 from datetime import datetime
 import heart_disease_pred
 
-app=Flask(__name__)
-global dataForm
-    
+app=Flask(__name__)  
 @app.route('/')
 def index():          
     return render_template('index.html')
 
-@app.route('/<dataForm>',methods = ['POST'])
-## manual manipulation of the system
-def handleRequest(dataForm):
-    print(request.json);                   
-    return dataForm
-
-@app.route('/result/<dataForm>',methods = ['GET'])
-## get the result from the model.
-def handleRequestResult(dataForm):
-    if dataForm is not None:
-        result = heart_disease_pred.predict_result(dataForm);  
-        print(result)                
-        return result 
+@app.route('/result', methods=['POST'])
+def handleRequestResult():
+    dataForm = request.json  # Get the JSON data from the request
+    print("dataForm test", dataForm)
     
+    if dataForm is not None and isinstance(dataForm, dict):
+        print(dataForm)
+        formatted_data = pd.DataFrame.from_dict(dataForm, orient='index').T
+        print(formatted_data)
+        
+        # Make predictions using the formatted data
+        result = heart_disease_pred.predict_result(formatted_data)
+        result = np.array2string(result)
+        return result
+    else:
+        return "Invalid data format", 400  # Return an error response if data is invalid
+
+# @app.route('/<dataForm>',methods = ['POST'])
+# ## manual manipulation of the system
+# def handleRequest(dataForm):
+#     print(request.json);                   
+#     return dataForm
+
+# @app.route('/result/<dataForm>',methods = ['GET'])
+# ## get the result from the model.
+# def handleRequestResult(dataForm):
+#     print("dataForm test",dataForm)
+#     if dataForm is not None:
+#         print(dataForm)
+#         formatted_data = pd.DataFrame.from_dict(dataForm, orient='index').T
+#         print(formatted_data)
+#         # Make predictions using the formatted data
+#         result = heart_disease_pred.predict_result(formatted_data)
+#         print(result)                
+#         return result 
+
                               
 if __name__=='__main__':    
     app.run(debug=True, port=5000, host='0.0.0.0')

@@ -130,32 +130,32 @@ submitBtn.addEventListener("click", function(){
     inputExercise(exerciseInput);
     inputSlope(slopeInput);
 
-    const body = {
-        Sex_F: Sex_F,
-        Sex_M: Sex_M,
+    const body = {        
         Age: ageInput,
         RestingBP: bloodPressureInput,
         Cholesterol: cholesterolInput,
         FastingBS: bloodSugarInput,
         MaxHR: heartRateInput,
-        OldPeak: oldpeakInput,
+        Oldpeak: oldpeakInput,
+        Sex_F: Sex_F,
+        Sex_M: Sex_M,
         ChestPainType_ASY: ChestPainType_ASY,
         ChestPainType_ATA: ChestPainType_ATA,
         ChestPainType_NAP: ChestPainType_NAP,
         ChestPainType_TA: ChestPainType_TA,
         RestingECG_LVH: RestingECG_LVH,
         RestingECG_Normal: RestingECG_Normal,
-        RestingCG_ST: RestingCG_ST,
+        RestingECG_ST: RestingCG_ST,
         ExerciseAngina_N: ExerciseAngina_N,
         ExerciseAngina_Y: ExerciseAngina_Y,
         ST_Slope_Down: ST_Slope_Down,
-        ST_Slope_flat: ST_Slope_flat,
+        ST_Slope_Flat: ST_Slope_flat,
         ST_Slope_Up: ST_Slope_Up
     }
 
     SendRequest( body )
 
-    GetRequest();
+    //GetRequest();
 
     summary.style.left = "-450px";
     results.style.left = "40px";
@@ -252,8 +252,9 @@ function inputChestPain (chestPainTypeInput){
 
 
 async function SendRequest(body){
+    let getResult = document.getElementById("getResult");
     try{
-        const response = await fetch("/dataForm", {
+        const response = await fetch("/result", {
             method: "POST",
             headers: {
                 'Content-Type': 'application/json' // Specify the content type as JSON
@@ -261,6 +262,16 @@ async function SendRequest(body){
             body: JSON.stringify(body)
         });
         console.log(response);
+        if (response.ok) {
+            const data = await response.text(); // Get the response as text
+            console.log(data); // Log the response data
+            
+
+            getResult.textContent = data; // Set response data as text content
+        } else {
+            // Handle non-successful responses here
+            console.error('Error:', response.statusText);
+        }
     }
     catch(error){
       console.error(error);
@@ -268,20 +279,20 @@ async function SendRequest(body){
   }
 
 
-  async function GetRequest(){
+//   async function GetRequest(){
 
-    let getResult = document.getElementById("getResult");
+//     let getResult = document.getElementById("getResult");
 
-    try{
-        const response = await fetch("/dataForm");
-        console.log(response);
-        const data = await response.json;
-        getResult.textContent = data;
-    }
-    catch(error){
-        console.error(error);
-      }
-  }
+//     try{
+//         const response = await fetch("/result/dataForm");
+//         console.log(response);
+//         const data = await response.json;
+//         getResult.textContent = data;
+//     }
+//     catch(error){
+//         console.error(error);
+//       }
+//   }
 
 /*************  VALIDATE FORM  *************/
 
