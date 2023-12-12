@@ -1,7 +1,9 @@
 from flask import Flask, render_template,request
 from datetime import datetime
+import heart_disease_pred
 
 app=Flask(__name__)
+global dataForm
     
 @app.route('/')
 def index():          
@@ -12,6 +14,14 @@ def index():
 def handleRequest(dataForm):
     print(request.json);                   
     return dataForm
+
+@app.route('/result/<dataForm>',methods = ['GET'])
+## get the result from the model.
+def handleRequestResult(dataForm):
+    if dataForm is not None:
+        result = heart_disease_pred.predict_result(dataForm);  
+        print(result)                
+        return result 
     
                               
 if __name__=='__main__':    
