@@ -71,7 +71,7 @@ next9.onclick = function(){nextQuestion(form9, form10, 10, "exercise")};
 next10.onclick = function(){nextQuestion(form10, form11, 11, "oldpeak")};
 next11.onclick = function(){
     summary.style.display = "block";
-    form11.style.display = "none";
+    //form11.style.display = "none";
     nextQuestion(form11, summary, 11, "slope")
     updateSummary()
 };
@@ -153,6 +153,9 @@ submitBtn.addEventListener("click", function(){
     }
 
     SendRequest( body )
+
+    summary.style.left = "-450px";
+    results.style.left = "40px";
 });
 
 
