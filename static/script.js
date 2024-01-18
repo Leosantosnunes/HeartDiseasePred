@@ -274,7 +274,9 @@ async function SendRequest(body){
 
             getResult.textContent = data; // Set response data as text content
 
-            if(getResult.value > 0.5){
+            const dataResult  = Number(data)
+
+            if(dataResult > 0.5){
                 textResult.textContent = "The patient has a high probability of having heart disease"
             }
             else{

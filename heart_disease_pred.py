@@ -7,7 +7,7 @@ from sklearn.metrics import roc_auc_score
 from sklearn.model_selection import train_test_split, GridSearchCV
 import app;
 
-heartcsv = pd.read_csv('C:/Users/leona/Desktop/SmartDevices/heart_disease/heart.csv')
+heartcsv = pd.read_csv('C:/Users/leona/Desktop/Projects/HeartDiseaseProj/heart.csv')
 
 y = heartcsv['HeartDisease']
 categorical_cols = ['Sex', 'ChestPainType', 'RestingECG', 'ExerciseAngina', 'ST_Slope']
